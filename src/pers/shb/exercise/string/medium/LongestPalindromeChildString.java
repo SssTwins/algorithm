@@ -1,4 +1,4 @@
-package pers.shb.exercise.string;
+package pers.shb.exercise.string.medium;
 
 /**
  * 最长回文子串

@@ -1,40 +1,39 @@
-package pers.shb.exercise.array;
+package pers.shb.exercise.array.easy;
 
 import java.math.BigDecimal;
 
 /**
+ * 合并两个有序数组
  * 给定两个大小为 m 和 n 的正序（从小到大）数组nums1 和nums2。请你找出并返回这两个正序数组的中位数。
- *
+ * <p>
  * 进阶：你能设计一个时间复杂度为 O(log (m+n)) 的算法解决此问题吗？
- *
- * 
- *
+ * <p>
  * 示例 1：
- *
+ * <p>
  * 输入：nums1 = [1,3], nums2 = [2]
  * 输出：2.00000
  * 解释：合并数组 = [1,2,3] ，中位数 2
  * 示例 2：
- *
+ * <p>
  * 输入：nums1 = [1,2], nums2 = [3,4]
  * 输出：2.50000
  * 解释：合并数组 = [1,2,3,4] ，中位数 (2 + 3) / 2 = 2.5
  * 示例 3：
- *
+ * <p>
  * 输入：nums1 = [0,0], nums2 = [0,0]
  * 输出：0.00000
  * 示例 4：
- *
+ * <p>
  * 输入：nums1 = [], nums2 = [1]
  * 输出：1.00000
  * 示例 5：
- *
+ * <p>
  * 输入：nums1 = [2], nums2 = []
  * 输出：2.00000
- * 
- *
+ * <p>
+ * <p>
  * 提示：
- *
+ * <p>
  * nums1.length == m
  * nums2.length == n
  * 0 <= m <= 1000
@@ -47,39 +46,40 @@ import java.math.BigDecimal;
  */
 public class MedianOfTwoSortedArrays {
     
-    public static  double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int[] result = merge(nums1,nums2);
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int[] result = merge(nums1, nums2);
         int len = result.length;
         double res;
-        if(len%2==0){
-            BigDecimal a = new BigDecimal(result[len/2]);
-            BigDecimal b = new BigDecimal(result[len/2-1]);
+        if (len % 2 == 0) {
+            BigDecimal a = new BigDecimal(result[len / 2]);
+            BigDecimal b = new BigDecimal(result[len / 2 - 1]);
             BigDecimal c = new BigDecimal("2");
-            res = a.add(b).divide(c,10,BigDecimal.ROUND_HALF_UP).doubleValue();
-        }else{
-            res =  result[len/2];
+            res = a.add(b).divide(c, 10, BigDecimal.ROUND_HALF_UP).doubleValue();
+        } else {
+            res = result[len / 2];
         }
         return res;
     }
     
     /**
      * 合并两个有序数组
+     *
      * @param nums1
      * @param nums2
      * @return 合并后的数组
      */
-    private static int[] merge(int[] nums1,int[] nums2){
+    private static int[] merge(int[] nums1, int[] nums2) {
         int len1 = nums1.length;
         int len2 = nums2.length;
-        int[] result = new int[len1+len2];
+        int[] result = new int[len1 + len2];
         int p = len1-- + len2-- - 1;
-        while(len1>=0 && len2>=0){
-            result[p--]=nums1[len1]>nums2[len2]?nums1[len1--]:nums2[len2--];
+        while (len1 >= 0 && len2 >= 0) {
+            result[p--] = nums1[len1] > nums2[len2] ? nums1[len1--] : nums2[len2--];
         }
-        while(len1>=0){
+        while (len1 >= 0) {
             result[p--] = nums1[len1--];
         }
-        while(len2>=0){
+        while (len2 >= 0) {
             result[p--] = nums2[len2--];
         }
         return result;

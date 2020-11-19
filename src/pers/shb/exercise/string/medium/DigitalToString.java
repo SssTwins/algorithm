@@ -1,4 +1,4 @@
-package pers.shb.exercise.string;
+package pers.shb.exercise.string.medium;
 
 /**
  * 把数字翻译成字符串
