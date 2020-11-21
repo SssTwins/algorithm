@@ -1,5 +1,8 @@
 package pers.shb;
 
+import pers.shb.exercise.list.medium.SortList;
+import pers.shb.exercise.list.utils.ListNode;
+
 import java.util.*;
 
 /**
@@ -8,43 +11,21 @@ import java.util.*;
 public class Main {
     
     public static void main(String[] args) {
-        char[][] grid = {
-                {'1', '1', '1', '0', '0'},
-                {'1', '1', '0', '0', '1'},
-                {'1', '0', '0', '1', '1'},
-                {'0', '0', '1', '1', '1'}
-        };
-        System.err.println(numIslands(grid, 6));
+        ListNode listNode = new ListNode(4);
+        ListNode listNode2 = new ListNode(2);
+        ListNode listNode3 = new ListNode(3);
+        ListNode listNode4 = new ListNode(1);
+        listNode.next = listNode2;
+        listNode2.next = listNode3;
+        listNode3.next = listNode4;
+        
+        ListNode head=SortList.sortList(listNode);
+        while (head!=null){
+            System.err.println(head.val);
+            head = head.next;
+        }
     }
     
-    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int[] result = merge(nums1, nums2);
-        int len = result.length;
-        double res;
-        if (len % 2 == 0) {
-            res = (result[len / 2] + result[len / 2 - 1]) / 2;
-        } else {
-            res = result[len / 2];
-        }
-        return res;
-    }
-    
-    public static int[] merge(int[] nums1, int[] nums2) {
-        int len1 = nums1.length;
-        int len2 = nums2.length;
-        int[] result = new int[len1 + len2];
-        int p = len1-- + len2-- - 1;
-        while (len1 >= 0 && len2 >= 0) {
-            result[p--] = nums1[len1] > nums2[len2] ? nums1[len1--] : nums2[len2--];
-        }
-        while (len1 >= 0) {
-            result[p--] = nums1[len1--];
-        }
-        while (len2 >= 0) {
-            result[p--] = nums2[len2--];
-        }
-        return result;
-    }
     
     /**
      * 广度优先搜索判断岛屿数量
