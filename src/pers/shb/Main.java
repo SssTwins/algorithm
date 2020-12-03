@@ -1,5 +1,6 @@
 package pers.shb;
 
+import pers.shb.exercise.list.easy.PalindromeLinkedList;
 import pers.shb.exercise.list.medium.SortList;
 import pers.shb.exercise.list.utils.ListNode;
 
@@ -13,17 +14,13 @@ public class Main {
     public static void main(String[] args) {
         ListNode listNode = new ListNode(4);
         ListNode listNode2 = new ListNode(2);
-        ListNode listNode3 = new ListNode(3);
-        ListNode listNode4 = new ListNode(1);
+        ListNode listNode3 = new ListNode(2);
+        ListNode listNode4 = new ListNode(4);
         listNode.next = listNode2;
         listNode2.next = listNode3;
         listNode3.next = listNode4;
-        
-        ListNode head=SortList.sortList(listNode);
-        while (head!=null){
-            System.err.println(head.val);
-            head = head.next;
-        }
+    
+        System.err.println(PalindromeLinkedList.isPalindrome(listNode));
     }
     
     
